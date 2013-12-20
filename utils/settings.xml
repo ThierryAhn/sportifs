@@ -7,7 +7,7 @@
       <host>charon.olympe</host>
       <port>3128</port>
       <username>kardosim</username>
-      <password>cemen123</password>
+      <password></password>
       <nonProxyHosts>127.0.0.1|localhost</nonProxyHosts>
     </proxy>
   </proxies>
