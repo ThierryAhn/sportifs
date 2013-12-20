@@ -156,7 +156,7 @@ public class DumpServlet extends HttpServlet implements
 	 * @param message
 	 *            The message string to be filtered
 	 */
-	private String filter(String message) {
+	public String filter(String message) {
 
 		if (message == null)
 			return (null);
