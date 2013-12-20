@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>fr.univ-rouen</groupId>
+		<artifactId>sportifs-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>sportifs-webapp-2</artifactId>
+	<packaging>war</packaging>
+
+	<properties>
+		<webapp.name>sportifs-webapp-2</webapp.name>
+		<webapp.port>8089</webapp.port>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+			<version>2.5.4</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>${webapp.name}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<path>/${webapp.name}</path>
+					<port>${webapp.port}</port>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.1.7.v20120910</version>
+				<configuration>
+					<contextPath>/${webapp.name}</contextPath>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

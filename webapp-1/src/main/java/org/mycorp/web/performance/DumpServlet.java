@@ -30,35 +30,10 @@ import org.springframework.jmx.export.annotation.ManagedAttribute;
  * 
  */
 
-public class DumpServlet extends HttpServlet implements
-		MonitoringResourceMXBean {
+public class DumpServlet extends HttpServlet  {
 
-	private MBeanServer platformMBeanServer;
 	private ObjectName objectName = null;
 	private long callCount = 0;
-
-	@Override
-	public void init() {
-		try {
-			objectName = new ObjectName("DumpMonitoring:type="
-					+ this.getClass().getName());
-			platformMBeanServer = ManagementFactory.getPlatformMBeanServer();
-			platformMBeanServer.registerMBean(this, objectName);
-		} catch (Exception e) {
-			throw new IllegalStateException(
-					"Problem during registration of Monitoring into JMX:" + e);
-		}
-	}
-
-	@Override
-	public void destroy() {
-		try {
-			platformMBeanServer.unregisterMBean(this.objectName);
-		} catch (Exception e) {
-			throw new IllegalStateException(
-					"Problem during unregistration of Monitoring into JMX:" + e);
-		}
-	}
 
 	public int getVersion() {
 		return 12;

@@ -35,46 +35,17 @@ import javax.servlet.http.HttpServletResponse;
  * @author henri.gomez@gmail.com
  * 
  */
-public class PerfMeterServlet extends HttpServlet implements
-		MonitoringResourceMXBean {
+public class PerfMeterServlet extends HttpServlet {
 
 	private long defaultWaitTime = 1000000L;
 	private int defaultResponseSize = -1;
 	private String defaultResponse = "the quick brown fox jumps over the lazy dog";
-	private MBeanServer platformMBeanServer;
-	private ObjectName objectName = null;
 	private long callCount = 0;
-
-	@Override
-	public void destroy() {
-		try {
-			platformMBeanServer.unregisterMBean(this.objectName);
-		} catch (Exception e) {
-			throw new IllegalStateException(
-					"Problem during unregistration of Monitoring into JMX:" + e);
-		}
-	}
-
-	public int getVersion() {
-		return 12;
-	}
-
-	public long getCallCount() {
-		return callCount;
-	}
 
 	/**
 	 * Initialize this servlet.
 	 */
 	public void init() throws ServletException {
-		try {
-			objectName = new ObjectName("WebPerfMonitoring:type=" + this.getClass().getName());
-			platformMBeanServer = ManagementFactory.getPlatformMBeanServer();
-			platformMBeanServer.registerMBean(this, objectName);
-		} catch (Exception e) {
-			throw new IllegalStateException(
-					"Problem during registration of Monitoring into JMX:" + e);
-		}
 
 		String lWaitTimeS = getServletConfig().getInitParameter("waittime"); // WaitTime
 																				// in
