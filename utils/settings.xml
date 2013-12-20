@@ -1,0 +1,15 @@
+<settings>
+  
+  <proxies>
+   <proxy>
+      <active>true</active>
+      <protocol>http</protocol>
+      <host>charon.olympe</host>
+      <port>3128</port>
+      <username>kardosim</username>
+      <password>cemen123</password>
+      <nonProxyHosts>127.0.0.1|localhost</nonProxyHosts>
+    </proxy>
+  </proxies>
+    
+</settings>
